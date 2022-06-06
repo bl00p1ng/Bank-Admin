@@ -1,31 +1,24 @@
 from view.UI import UI as ui
 from model.Bank import Bank
-from model.ATM import ATM
 
 
 if __name__ == '__main__':
     mainloop = True
-    ATMs = []  # Colecciona los cajeros
-    bank = None
+    bank = Bank()
 
     while mainloop:
         userOption = ui.menu()
 
         if userOption == 1:
             # CREATE
-            atmData = ui.createForm()
-            # Instanciar cajero
-            atm = ATM(code=atmData['codigo'],
-                      status=atm['estado'],
-                      model=atmData['modeloCajero'],
-                      transactions=atmData['transacciones'])
-
-            ATMs.append(atm)  # Coleccionar cajeros
-            bank = Bank(ATMs=ATMs)  # Instanciar banco
+            atmData = ui.createForm()  # Obtiene datos del usuario
+            bank.addATM(atmData)
 
         elif userOption == 2:
             # READ
-            pass
+            print('\n***** MOSTRAR CAJEROS Y SUS TRANSACCIONES *****\n')
+            bank.showATMs()
+
         elif userOption == 3:
             # UPDATE
             pass

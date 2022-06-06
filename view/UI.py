@@ -47,6 +47,7 @@ class UI:
         return actionType
 
 
+    # CREATE
     def createForm():
         """
         Crea un cajero junto a sus respectivas transacciones
@@ -55,7 +56,7 @@ class UI:
         # Datos del cajero
         print(':: Datos del cajero')
         code = input('-> Ingresa el código del cajero: ')
-        status = input('-> Ingresa el estado del cajero("Fuera  de Servicio", "Operando" o "Cerrado"): ')
+        status = input('-> Ingresa el estado del cajero("Fuera  de Servicio", "Operando" o "Cerrado"): ').capitalize()
         model = int(input('-> Ingresa el modelo del cajero: '))
         zone = int(input('-> Ingresa la zona: '))
 
@@ -68,8 +69,8 @@ class UI:
         while makeOther:
             date = input('-> Ingresa la fecha(DD-MM-AAAA): ')
             value = int(input('-> Ingresa el monto de la transacción: '))
-            accountType = input('-> Ingresa el tipo de cuenta: ')
-            transactionType = input('-> Ingresa el tipo de transacción: ')
+            accountType = input('-> Ingresa el tipo de cuenta: ').lower()
+            transactionType = input('-> Ingresa el tipo de transacción: ').lower()
 
             transactionsCreated.append({'fechaMovimiento': date, 
                                         'monto': value, 
