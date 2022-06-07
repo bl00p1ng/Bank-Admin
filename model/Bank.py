@@ -203,8 +203,6 @@ class Bank:
         for atm in self.__ATMs:
             consignments.append(atm.getJanuaryConsignments())
 
-        # Filtrar los cajeros que no tienen consignaciones en enero de 2021
-        filterEmpty = list(filter(lambda c: c != [], consignments))
-        januaryConsignments = len(filterEmpty)
+        januaryConsignments = sum(consignments)
 
         return januaryConsignments

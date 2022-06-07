@@ -95,7 +95,7 @@ class ATM:
         """
         
         consignments = list(filter(lambda t: t['tipoMovimiento'] == 'consignacion', self.__transactions))
-        januaryConsignments = list(filter(lambda c: re.search(r'-01-2021', c['fechaMovimiento']), consignments))
+        januaryConsignments = len(list(filter(lambda c: re.search(r'-01-2021', c['fechaMovimiento']), consignments)))
 
         return januaryConsignments
 
