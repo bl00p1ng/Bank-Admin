@@ -51,6 +51,18 @@ class ATM:
         return self.__code
 
 
+    def getStatus(self):
+        return self.__status
+
+
+    def getModel(self):
+        return self.__model
+
+
+    def getZone(self):
+        return self.__zone
+
+
     def getTransactions(self):
         return self.__transactions
 

@@ -1,5 +1,6 @@
 import json
 from model.ATM import ATM
+import pprint as pp
 
 
 class Bank:
@@ -123,3 +124,23 @@ class Bank:
         for atm in self.__ATMs:
             if atm.getCode() == code:
                 atm.getTransactions().pop(index)
+
+
+    def saveData(self):
+        """
+        Guarda los cambios en un archivo json
+        """
+
+        atmAttributes = dict()
+
+        for atm in self.__ATMs:
+            atmAttributes[atm.getCode()] = {'estado': atm.getStatus(), 
+                                            'modeloCajero': atm.getModel(),
+                                            'transacciones': atm.getTransactions(),
+                                            'zona': atm.getZone()}
+
+        try:
+            with open('resources/data/db.json','w') as f:
+                json.dump(atmAttributes, f)
+        except:
+            print("Se produjo un error al guardar los datos!")

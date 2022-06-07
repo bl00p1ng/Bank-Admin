@@ -70,6 +70,10 @@ if __name__ == '__main__':
                 indexTransaction = ui.getTransactionIndex()
 
                 bank.deleteATMTransaction(codeATMChosen, indexTransaction)
+
         elif userOption == 0:
             # EXIT
+            # Guardar cambios en disco
+            bank.saveData()
+
             mainloop = False
