@@ -194,3 +194,17 @@ class Bank:
         orderTranferDescending = list(sorted(tranfersByATM, key=lambda t: t[1], reverse=True))
 
         return orderTranferDescending[0]
+
+
+    # Total de consignaciones que se han hecho en enero de 2021
+    def fouthRequeriment(self):
+        consignments = []
+
+        for atm in self.__ATMs:
+            consignments.append(atm.getJanuaryConsignments())
+
+        # Filtrar los cajeros que no tienen consignaciones en enero de 2021
+        filterEmpty = list(filter(lambda c: c != [], consignments))
+        januaryConsignments = len(filterEmpty)
+
+        return januaryConsignments

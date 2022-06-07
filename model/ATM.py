@@ -1,4 +1,4 @@
-from unittest import result
+import re
 
 
 class ATM:
@@ -85,6 +85,19 @@ class ATM:
         transferNumber = len(list(filter(lambda t: t['tipoMovimiento'] == 'transferencia', self.__transactions)))
 
         return transferNumber
+
+
+    def getJanuaryConsignments(self):
+        """
+        Obtiene las consignaciones hechas en enero de 2021
+        Retona:
+            januaryConsignments: cantidad de consignaciones hechas en enero del 2021
+        """
+        
+        consignments = list(filter(lambda t: t['tipoMovimiento'] == 'consignacion', self.__transactions))
+        januaryConsignments = list(filter(lambda c: re.search(r'-01-2021', c['fechaMovimiento']), consignments))
+
+        return januaryConsignments
 
 
     # GETTERS

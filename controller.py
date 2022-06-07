@@ -36,7 +36,9 @@ if __name__ == '__main__':
                     ui.showMsg('El cajero con más transferencias\n (código cajero, número de transferencias)\n', atmWithMoreTransfers)
 
                 elif userChoise == 'D':
-                    pass
+                    januaryConsignments = bank.fouthRequeriment()
+                    ui.showMsg('El total de consignaciones en Enero del 2021 fue', januaryConsignments)
+
 
         elif userOption == 3:
             # UPDATE
