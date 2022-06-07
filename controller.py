@@ -48,11 +48,28 @@ if __name__ == '__main__':
                 # Actualizar los datos de la transacción del cajero con el código ingresado
                 bank.updateTransactionData(codeATMChosen, transactionDataToUpdate, index)
 
-
-
         elif userOption == 4:
             # DELETE
-            pass
+            # Saber si se quiere BORRAR un cajero o una transacción
+            deleteType = ui.selectActionType('eliminar')
+
+            bank.showATMs()  # Mostrar cajeros
+
+            # Obtener el codigo del cajero a borrar
+            codeATMChosen = ui.deleteForm()
+
+            if deleteType == 1:
+                # Borrar los datos del cajero con el código ingresado
+                bank.deleteATMByCode(codeATMChosen)
+
+            elif deleteType == 2:
+                # Mostrar las transacciones del cajero seleccionado
+                bank.showATMTransactions(codeATMChosen)
+
+                # Obtener el índice de la transacción a eliminar
+                indexTransaction = ui.getTransactionIndex()
+
+                bank.deleteATMTransaction(codeATMChosen, indexTransaction)
         elif userOption == 0:
             # EXIT
             mainloop = False

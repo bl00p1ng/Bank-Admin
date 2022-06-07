@@ -134,3 +134,28 @@ class UI:
         newTransactionType = input('-> Ingresa el tipo de transacción: ').lower()
 
         return index, (newdate, newValue, newAccountType, newTransactionType)
+
+
+    # DELETE
+    def deleteForm():
+        """
+        Obtener el código del cajero a borrar
+        Retorna:
+            codeATMChosen: el código del cajero
+        """
+
+        print('\n***** BORRAR DATOS *****\n')
+        codeATMChosen = input('-> Ingresa el código de un cajero: ')
+
+        return codeATMChosen
+
+
+    def getTransactionIndex():
+        """
+        Obtiene el indice de una transaccción
+        Retorna:
+            index: el índice de la transacción a eliminar
+        """
+
+        index = int(input('-> Ingresa el índice de la transacción a eliminar: '))
+        return index

@@ -98,3 +98,28 @@ class Bank:
                         transaction['monto'] = newData[1]
                         transaction['tipoCuenta'] = newData[2]
                         transaction['tipoMovimiento'] = newData[3]
+
+
+    def deleteATMByCode(self, code):
+        """
+        Busca un cajero por su código y borra sus datos
+        Recibe por parámetro:
+            code: el código del cajero a buscar
+        """
+
+        for index, atm in enumerate(self.__ATMs):
+            if atm.getCode() == code:
+                self.__ATMs.pop(index)
+
+
+    def deleteATMTransaction(self, code, index):
+        """
+        Busca un cajero por su código y borra una de sus transacciones
+        Recibe por parámetro:
+            code: el código del cajero a buscar
+            index: el índice de la transacción a eliminar
+        """
+
+        for atm in self.__ATMs:
+            if atm.getCode() == code:
+                atm.getTransactions().pop(index)
