@@ -75,6 +75,18 @@ class ATM:
         return withdrawalValues
 
 
+    def countTransfers(self):
+        """
+        Cuenta la cantidad de transferencias del cajero
+        Retorna:
+            transferNumber: la cantidad de transferencias del cajero
+        """
+
+        transferNumber = len(list(filter(lambda t: t['tipoMovimiento'] == 'transferencia', self.__transactions)))
+
+        return transferNumber
+
+
     # GETTERS
     def getCode(self):
         return self.__code

@@ -180,3 +180,17 @@ class Bank:
 
         return lowestWithdrawalsByATM
 
+
+    # El cajero con el mayor número de transferencias
+    def thirdRequirement(self):
+        atmCodes = list(map(lambda atm: atm.getCode(), self.__ATMs))
+        transfers = []
+
+        for atm in self.__ATMs:
+            transfers.append(atm.countTransfers())
+
+        tranfersByATM = list(zip(atmCodes, transfers))
+
+        orderTranferDescending = list(sorted(tranfersByATM, key=lambda t: t[1], reverse=True))
+
+        return orderTranferDescending[0]

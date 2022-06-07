@@ -32,7 +32,9 @@ if __name__ == '__main__':
                     ui.showMsg('El retiro menor de cada cajero\n (código cajero, valor retiro)\n', lowestWithdrawals)
 
                 elif userChoise == 'C':
-                    pass
+                    atmWithMoreTransfers = bank.thirdRequirement()
+                    ui.showMsg('El cajero con más transferencias\n (código cajero, número de transferencias)\n', atmWithMoreTransfers)
+
                 elif userChoise == 'D':
                     pass
 
