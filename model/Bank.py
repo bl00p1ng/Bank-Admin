@@ -165,8 +165,18 @@ class Bank:
 
 
     ## Menor retiro de cada cajero
-    def minorWithdrawal(self):
+    def secondRequirement(self):
         atmCodes = list(map(lambda atm: atm.getCode(), self.__ATMs))
-        transactions = list(map(lambda atm: atm.getTransactions(), self.__ATMs))
-        transactionsValues = list(map(lambda t: list(map(lambda t: t['monto'], t)), transactions))
+        withdrawals = []
+
+        for atm in self.__ATMs:
+            withdrawals.append(atm.getWithdrawal())
+
+        # Filtrar los cajeros que no tienen retiros
+        filterNowithdrawals = list(filter(lambda w: w != [], withdrawals))
+        
+        lowestWithdrawals = list(min(filterNowithdrawals))
+        lowestWithdrawalsByATM = list(zip(atmCodes, lowestWithdrawals))
+
+        return lowestWithdrawalsByATM
 

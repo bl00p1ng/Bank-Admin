@@ -28,13 +28,13 @@ if __name__ == '__main__':
                     ui.showMsg('La consignación más alta de cada cajero\n (código cajero, valor consignación)\n', higherConsignments)
 
                 elif userChoise == 'B':
-                    pass
+                    lowestWithdrawals = bank.secondRequirement()
+                    ui.showMsg('El retiro menor de cada cajero\n (código cajero, valor retiro)\n', lowestWithdrawals)
+
                 elif userChoise == 'C':
                     pass
                 elif userChoise == 'D':
                     pass
-
-
 
         elif userOption == 3:
             # UPDATE

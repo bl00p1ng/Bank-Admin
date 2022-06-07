@@ -62,6 +62,19 @@ class ATM:
         return consignmentValues
 
 
+    def getWithdrawal(self):
+        """
+        Obtiene los retiros del cajero
+        Retona:
+            withdrawalValues: lista con los valores de los retiros
+        """
+        
+        withdrawals = list(filter(lambda t: t['tipoMovimiento'] == 'retiro', self.__transactions))
+        withdrawalValues = list(map(lambda c: c['monto'], withdrawals))
+
+        return withdrawalValues
+
+
     # GETTERS
     def getCode(self):
         return self.__code
