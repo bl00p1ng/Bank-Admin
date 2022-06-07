@@ -47,5 +47,54 @@ class Bank:
 
 
     def showATMs(self):
+        """
+        Recorre todos los cajeros y les ordena que muestren atributos
+        """
         for atm in self.__ATMs:
             atm.showATMData()
+
+
+    def updateATMDataByCode(self, code, newData):
+        """
+        Busca un cajero por su código y actualiza sus datos
+        Recibe por parámetro:
+            code: el código del cajero a buscar
+            newData:los datos que se van a actualizar en el cajero
+        """
+
+        for atm in self.__ATMs:
+            if atm.getCode() == code:
+                # Actulizar datos
+                atm.setStatus(newData[0])
+                atm.setModel(newData[1])
+                atm.setZone(newData[2])
+
+
+    def showATMTransactions(self, code):
+        """
+        Busca un cajero por su código y muestra sus transacciones enumeradas
+        Recibe por parámetro:
+            code: el código del cajero a buscar
+        """
+        for atm in self.__ATMs:
+            if atm.getCode() == code:
+                atm.showTransactions()
+
+
+    def updateTransactionData(self, code, newData, index):
+        """
+        Busca un cajero por su código y actualiza una de sus transacciones
+        Recibe por parámetro:
+            code: el código del cajero a buscar
+            newData: los datos que se van a actualizar en la transaccion
+            index: el índice de la transacción a actualizar
+        """
+
+        for atm in self.__ATMs:
+            if atm.getCode() == code:
+                for tindex, transaction in enumerate(atm.getTransactions()):
+                    if tindex == index:
+                        transaction['fechaMovimiento'] = newData[0]
+                        transaction['monto'] = newData[1]
+                        transaction['tipoCuenta'] = newData[2]
+                        transaction['tipoMovimiento'] = newData[3]

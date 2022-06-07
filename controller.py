@@ -21,7 +21,35 @@ if __name__ == '__main__':
 
         elif userOption == 3:
             # UPDATE
-            pass
+            bank.showATMs()  # Mostrar cajeros
+
+            # Obtener el codigo del cajero a actualizar y los datos a actualizar
+            codeATMChosen = ui.updateForm()
+
+            # Saber si se quiere actualizar un cajero o una transacción
+            updateType = ui.selectActionType('actualizar')
+
+            # Actulizar datos del cajero
+            if updateType == 1:
+                # Obtener los datos a actualizar del CAJERO
+                atmDataToUpdate = ui.getNewATMData()
+
+                # Actualizar los datos del cajero con el código ingresado
+                bank.updateATMDataByCode(codeATMChosen, atmDataToUpdate)
+
+            # Actualizar transacción
+            elif updateType == 2:
+                # Mostrar las transacciones del cajero seleccionado
+                bank.showATMTransactions(codeATMChosen)
+
+                # Obtener los datos a actualizar de la TRANSACCIÓN
+                index, transactionDataToUpdate = ui.getNewTransactionData()
+
+                # Actualizar los datos de la transacción del cajero con el código ingresado
+                bank.updateTransactionData(codeATMChosen, transactionDataToUpdate, index)
+
+
+
         elif userOption == 4:
             # DELETE
             pass

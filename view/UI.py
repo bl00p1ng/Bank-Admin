@@ -1,3 +1,6 @@
+from turtle import update
+
+
 class UI:
     def menu():
         """
@@ -25,7 +28,7 @@ class UI:
         return userOption
 
 
-    def selectActionType(self, msg):
+    def selectActionType(msg):
         """
         Determina sobre que datos se va a realizar una operación del CRUD
         Recibe por parametros:
@@ -33,7 +36,7 @@ class UI:
 
         Retorna:
             1: En caso de que la operción se realice sobre los cajeros
-            0: En caso de que la operción se realice sobre las transacciones
+            2: En caso de que la operción se realice sobre las transacciones
         """
 
         print(f"""
@@ -43,7 +46,8 @@ class UI:
 2 -> Transacción
         """)
 
-        actionType = input(f'-> Elije una opción: ')
+        actionType = int(input(f'-> Elije una opción: '))
+
         return actionType
 
 
@@ -85,3 +89,48 @@ class UI:
                 'modeloCajero': model,
                 'zona': zone,
                 'transacciones': transactionsCreated}
+
+
+    # UPDATE
+    def updateForm():
+        """
+        Obtener el código del cajero a actualizar
+        Retorna:
+            codeATMChosen: el código del cajero a actualizar
+        """
+
+        print('\n***** ACTUALIZAR DATOS *****\n')
+        codeATMChosen = input('-> Ingresa el código del cajero que quieres actualizar: ')
+
+        return codeATMChosen
+
+
+    def getNewATMData():
+        """
+        Recopila los datos a actualizar de un cajero
+        Retorna:
+            Una tupla con los datos a actualizar
+        """
+
+        newStatus = input('-> Ingresa el estado nuevo del cajero("Fuera  de Servicio", "Operando" o "Cerrado"): ').capitalize()
+        newModel = int(input('-> Ingresa el modelo del cajero: '))
+        newZone = int(input('-> Ingresa la zona: '))
+
+        return (newStatus, newModel, newZone)
+
+
+    def getNewTransactionData():
+        """
+        Recopila los datos a actualizar de una transacción
+        Retorna:
+            index: el índice de la transacción a actualizar
+            Una tupla con los datos a actualizar de la transacción
+        """
+
+        index = int(input('-> Ingresa el índice de la transacción a actualizar: '))
+        newdate = input('-> Ingresa la fecha(DD-MM-AAAA): ')
+        newValue = int(input('-> Ingresa el monto de la transacción: '))
+        newAccountType = input('-> Ingresa el tipo de cuenta: ').lower()
+        newTransactionType = input('-> Ingresa el tipo de transacción: ').lower()
+
+        return index, (newdate, newValue, newAccountType, newTransactionType)

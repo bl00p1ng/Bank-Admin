@@ -26,3 +26,43 @@ class ATM:
             print(f'| Tipo de Cuenta:     | {transaction["tipoCuenta"]}')
             print(f'| Tipo de Movimiento: | {transaction["tipoMovimiento"]}')
             print(f"+{''.join(['-']) * 33}+")
+
+
+    def showTransactions(self):
+        """
+        Muestra las transacciones del cajero junto a su índice
+        """
+
+        print('+---------------------------------+')
+        print('|         TRANSACCIONES           |')
+        for index, transaction in enumerate(self.__transactions):
+            print('+---------------------------------+')
+            print(f'| --> INDICE: {index}                   |')
+            print(f"+{''.join(['-']) * 21}+{''.join(['-']) * 11}+")
+            print(f'| Fecha:              | {transaction["fechaMovimiento"]}')
+            print(f'| Monto:              | {transaction["monto"]}')
+            print(f'| Tipo de Cuenta:     | {transaction["tipoCuenta"]}')
+            print(f'| Tipo de Movimiento: | {transaction["tipoMovimiento"]}')
+            print(f"+{''.join(['-']) * 33}+")
+
+
+    # GETTERS
+    def getCode(self):
+        return self.__code
+
+
+    def getTransactions(self):
+        return self.__transactions
+
+
+    # SETTERS
+    def setStatus(self, newStatus):
+        self.__status = newStatus
+
+
+    def setModel(self, newModel):
+        self.__model = newModel
+
+
+    def setZone(self, newZone):
+        self.__zone = newZone
