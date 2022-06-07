@@ -16,8 +16,25 @@ if __name__ == '__main__':
 
         elif userOption == 2:
             # READ
-            print('\n***** MOSTRAR CAJEROS Y SUS TRANSACCIONES *****\n')
-            bank.showATMs()
+            userAction = ui.readForm()
+
+            if userAction == 1:
+                bank.showATMs()
+            elif userAction == 2:
+                userChoise = ui.requirements()
+
+                if userChoise == 'A':
+                    higherConsignments = bank.firstRequirement()
+                    ui.showMsg('La consignación más alta de cada cajero\n (código cajero, valor consignación)\n', higherConsignments)
+
+                elif userChoise == 'B':
+                    pass
+                elif userChoise == 'C':
+                    pass
+                elif userChoise == 'D':
+                    pass
+
+
 
         elif userOption == 3:
             # UPDATE

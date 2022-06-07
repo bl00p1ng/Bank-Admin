@@ -91,6 +91,59 @@ class UI:
                 'transacciones': transactionsCreated}
 
 
+    # READ
+    def readForm():
+        """
+        Obtener la acción a ejecutar del usuario en el menu de READ
+        Retorna:
+            1: En caso de que el usuario quiera ver los datos de los cajeros
+            2: En caso de que la operción quiera ver el menu de requerimientos
+        """
+
+        print("""
+:: Deseas ver los datos de los cajeros o ir al menu de requerimientos
+
+1 -> Ver datos
+2 -> Ir al menu
+        """)
+
+        userAction = int(input(f'-> Elije una opción: '))
+
+        return userAction
+
+
+    def requirements():
+        """
+        Muestra el menu de requerimientos y obtiene la opción elegida por el
+        usuario
+        Retorna:
+            userChoise: la elección del usuario
+        """
+        print("""
+        :: REQUERIMIENTOS
+
+        A -> Consignación más alta de cada cajero.
+        B -> Menor retiro de cada cajero.
+        C -> El cajero con el mayor número de transferencias.
+        D -> El total de consignaciones que se han hecho en enero de 2021 en la firma bancaria.
+        """)
+
+        userChoise = input('--> Elige una opción: ').upper()
+
+        return userChoise
+
+
+    def showMsg(msg, data):
+        """
+        Muestra un mensaje simple acompañado por los datos de una variable
+        Recibe por parametros:
+            msg: Es un mensaje personalizado
+            data: los datos a mostrar
+        """
+
+        print(f':: {msg} -> {data}')
+
+
     # UPDATE
     def updateForm():
         """

@@ -1,3 +1,6 @@
+from unittest import result
+
+
 class ATM:
     def __init__(self, code='Sin código', status="Sin definir", model=000, transactions=[], zone=0):
         self.__code = code
@@ -44,6 +47,19 @@ class ATM:
             print(f'| Tipo de Cuenta:     | {transaction["tipoCuenta"]}')
             print(f'| Tipo de Movimiento: | {transaction["tipoMovimiento"]}')
             print(f"+{''.join(['-']) * 33}+")
+
+
+    def getConsignment(self):
+        """
+        Obtiene las consignaciones
+        Retona:
+            consignmentValues: lista con los valores de las consignaciones
+        """
+        
+        consignments = list(filter(lambda t: t['tipoMovimiento'] == 'consignacion', self.__transactions))
+        consignmentValues = list(map(lambda c: c['monto'], consignments))
+
+        return consignmentValues
 
 
     # GETTERS

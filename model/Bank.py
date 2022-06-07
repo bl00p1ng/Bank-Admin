@@ -144,3 +144,29 @@ class Bank:
                 json.dump(atmAttributes, f)
         except:
             print("Se produjo un error al guardar los datos!")
+
+
+    # Requerimientos
+    ## Consignación más alta de cada cajero.
+    def firstRequirement(self):
+        atmCodes = list(map(lambda atm: atm.getCode(), self.__ATMs))
+        consignments = []
+
+        for atm in self.__ATMs:
+            consignments.append(atm.getConsignment())
+
+        # Filtrar los cajeros que no tienen consignaciones
+        filterNoConsignments = list(filter(lambda c: c != [], consignments))
+        
+        highestConsignments = list(max(filterNoConsignments))
+        highestConsignmentsByATM = list(zip(atmCodes, highestConsignments))
+
+        return highestConsignmentsByATM
+
+
+    ## Menor retiro de cada cajero
+    def minorWithdrawal(self):
+        atmCodes = list(map(lambda atm: atm.getCode(), self.__ATMs))
+        transactions = list(map(lambda atm: atm.getTransactions(), self.__ATMs))
+        transactionsValues = list(map(lambda t: list(map(lambda t: t['monto'], t)), transactions))
+
